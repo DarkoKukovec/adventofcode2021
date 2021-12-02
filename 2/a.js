@@ -1,0 +1,17 @@
+const input = require('./input').split(/\n/g).map((row) => [ row.split(' ')[0], parseInt(row.split(' ')[1], 10) ]);
+
+let horizontal = 0;
+let vertical = 0;
+
+const cmds = {
+    up: (amount) => vertical -= amount,
+    down: (amount) => vertical += amount,
+    forward: (amount) => horizontal += amount,
+};
+
+for (let i = 0; i < input.length; i++) {
+    const [direction, amount] = input[i];
+    cmds[direction](amount);
+}
+
+console.log(horizontal * vertical);
