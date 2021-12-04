@@ -1,8 +1,5 @@
 const input = require('./input').split(/\n/g);
 
-let gamma = '';
-let epsilon = '';
-
 let oxygenList = input.slice();
 let co2List = input.slice();
 
