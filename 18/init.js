@@ -1,5 +1,5 @@
 const types = { '[': 'open', ']': 'close', ',': 'separator'};
-const input = require('./input').split(/\n/g).map((row) => row.match(/(\[|\]|,|\d)/g).map((item) => ({ type: types[item] || 'number', value: types[item] ? item : parseInt(item, 10) })));//.map((row) => JSON.parse(row));
+const input = require('./input').split(/\n/g).map((row) => row.match(/(\[|\]|,|\d)/g).map((item) => ({ type: types[item] || 'number', value: types[item] ? item : parseInt(item, 10) })));
 
 function checkExplode(input) {
     let depth = 0;
@@ -52,14 +52,12 @@ function checkOperations(input) {
         do {
             const explode = checkExplode(newInput);
             if (explode) {
-                // console.log('explode', prettyPrint(newInput), '|', prettyPrint(explode));
                 newInput = explode;
                 continue;
             }
 
             const split = checkSplit(newInput);
             if (split) {
-                // console.log('split', prettyPrint(newInput), '|', prettyPrint(split));
                 newInput = split;
                 continue;
             }
